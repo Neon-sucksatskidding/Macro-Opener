@@ -1,0 +1,16 @@
+## Macro opener
+this is a macro opener for bee swarm simulator 
+
+## __how to use__
+
+step one! make a discord bot! at (https://discord.com/developers/applications)
+make sure the bot has Message Content Intent on!
+invite it to at least one server. (to be safe)
+open Macro Opener input your discord bot token.
+then input your user id.
+how to get your user id:
+enable dev mode on discord and right click your profile and click copy user id.
+for the command trigger i suggest !OM but you can use anything!
+then hit browse and click your macro (revo has been tested natro has not been.)
+then chose if you want the gui on start up or just the bot starting up or neither! (you can turn both on)
+then hit start/stop bot!
