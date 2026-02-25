@@ -1,27 +1,60 @@
-# Macro Opener
+# Macro Opener (Discord Edition)
 
-This is a macro opener for **Bee Swarm Simulator**.
+A cleaner and more Discord-friendly macro launcher bot for Bee Swarm Simulator.
 
-## How to Use
+## What improved
 
-1. **Make a Discord bot** at [Discord Developer Portal](https://discord.com/developers/applications)  
-   - Make sure the bot has **Message Content Intent** on.  
-   - Invite it to at least one server (to be safe).
+- Uses modern `discord.py` (v2+) APIs.
+- Supports both **prefix commands** and **slash commands**.
+- Restricts macro control to one authorized Discord user ID.
+- Uses process state tracking so duplicate starts are blocked.
+- Automatically sends **F1** after starting the macro (configurable).
+- Adds graceful process shutdown and signal handling.
 
-2. **Open Macro Opener** and input your Discord bot token.
+## Commands
 
-3. **Input your user ID**  
-   How to get your user ID:  
-   - Enable **Developer Mode** on Discord  
-   - Right-click your profile and click **Copy ID**
+Assuming `MACRO_COMMAND_PREFIX=!om`:
 
-4. **Set a command trigger**  
-   - Suggested: `!OM` (you can use anything!)
+- Prefix commands:
+  - `!om start`
+  - `!om stop`
+  - `!om status`
+- Slash commands:
+  - `/macro-start`
+  - `/macro-stop`
+  - `/macro-status`
 
-5. **Upload your macro**  
-   - Click **Browse** and choose your macro (Revo has been tested, Natro has not).
+## Setup
 
-6. **Choose GUI options**  
-   - You can choose to have the GUI open on startup, the bot start automatically, or neither. Both can be turned on/off later.
+1. Create a Discord bot in the Developer Portal.
+2. Enable **Message Content Intent**.
+3. Invite the bot to your server with application command scope.
+4. Install dependencies:
 
-7. **Start/Stop the bot!** 🎉
+```bash
+python -m pip install -r requirements.txt
+```
+
+5. Set environment variables:
+
+```bash
+export DISCORD_TOKEN="your_bot_token"
+export AUTHORIZED_USER_ID="your_discord_user_id"
+export MACRO_PATH="/absolute/path/to/your/macro.exe"
+export MACRO_COMMAND_PREFIX="!om"      # optional
+export AUTO_PRESS_F1="true"             # optional, defaults to true
+export F1_PRESS_DELAY_SECONDS="2.0"     # optional, defaults to 2.0 seconds
+```
+
+6. Start the bot:
+
+```bash
+python macro_opener_bot.py
+```
+
+## Notes
+
+- `MACRO_PATH` can be a full command string (for example with arguments).
+- Only `AUTHORIZED_USER_ID` can start/stop the macro.
+- Slash commands reply with ephemeral messages.
+- For F1 keypress support, keep your macro window focused and ensure GUI automation is allowed in your OS/session.
